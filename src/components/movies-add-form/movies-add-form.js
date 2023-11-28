@@ -6,6 +6,7 @@ const MoviesAddForm=({addForm}) => {
     const changeHandlerInput = (e) => setState({...state, [e.target.name]: e.target.value})
     const  addFormHandler = (e) => {
         e.preventDefault()
+        if (state.name===''||state.viewers==='') return
         const data={name:state.name,viewers: state.viewers}
         addForm(data)
         setState({name: '',viewers: ''})
