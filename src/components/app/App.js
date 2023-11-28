@@ -4,7 +4,7 @@ import AppFilter from "../app-filter/AppFilter";
 import './App.css';
 import MovieList from "../movie-list/MovieList";
 import MoviesAddForm from "../movies-add-form/movies-add-form";
-import {Component, Fragment} from "react";
+import {Component} from "react";
 import {v4 as id} from "uuid";
 
 
@@ -20,7 +20,7 @@ class App extends Component {
                 {id: 5, name: 'Ketomon', viewers: 550, favourite: true, like: false},
             ],
             term: '',
-            filter:'all'
+            filter: 'all'
         }
     }
 
@@ -53,26 +53,30 @@ class App extends Component {
         return arr.filter(item => item.name.toLowerCase().indexOf(term) > -1)
     }
 
-    updateTermHandler=(term)=>{this.setState({term})}
+    updateTermHandler = (term) => {
+        this.setState({term})
+    }
 
-    filterHandler=(arr,filter)=>{
-        switch (filter){
+    filterHandler = (arr, filter) => {
+        switch (filter) {
             case 'popular':
-                return arr.filter(c=>c.like)
+                return arr.filter(c => c.like)
             case 'mostViewers':
-                return arr.filter(c=>c.viewers>500)
+                return arr.filter(c => c.viewers > 500)
             default:
                 return arr
         }
     }
-updateFilterHandler=(filter)=>{
-this.setState({filter})
-}
+    updateFilterHandler = (filter) => {
+        this.setState({filter})
+    }
+
     render() {
-        const {data,term,filter} = this.state
+        const {data, term, filter} = this.state
         const all = data.length
         const favourite = data.filter(c => c.favourite).length
-        const visibleDat=this.filterHandler(this.searchHandler(data,term),filter)
+        const visibleDat = this.filterHandler(this.searchHandler(data, term), filter)
+
         return (
             <div className='app font-monospace'>
                 <div className='content'>

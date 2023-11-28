@@ -1,6 +1,5 @@
 import './AppInfo.css'
 
-
 const AppInfo = ({all,favourite}) => {
     return (
         <div className='app-info'>
