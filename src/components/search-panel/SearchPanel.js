@@ -1,12 +1,14 @@
 import './SearchPanel.css'
-import {Component, useState} from "react";
+import {Component, useContext, useState} from "react";
+import {Context} from "../../context";
 
-const SearchPanel = (props) => {
+const SearchPanel = () => {
+    const {dispatch} = useContext(Context)
     const [term, setTerm] = useState('')
     const updateTermHandler = (e) => {
         const term = e.target.value
         setTerm(term)
-        props.updateTermHandler(term)
+        dispatch({type: "ON_TERM", payload: term})
     }
     return <input type='text'
                   className='form-control search-input'

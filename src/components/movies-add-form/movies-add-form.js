@@ -1,19 +1,22 @@
 import './movies-add-form.css'
-import {Component, useState} from "react";
+import {Component, useContext, useState} from "react";
+import {Context} from "../../context";
+import {type} from "@testing-library/user-event/dist/type";
 
-const MoviesAddForm=({addForm}) => {
+const MoviesAddForm = () => {
+    const {state1, dispatch} = useContext(Context)
+
     const [state, setState] = useState({name: '', viewers: ''})
     const changeHandlerInput = (e) => setState({...state, [e.target.name]: e.target.value})
-    const  addFormHandler = (e) => {
+    const addFormHandler = (e) => {
         e.preventDefault()
-        if (state.name===''||state.viewers==='') return
-        const data={name:state.name,viewers: state.viewers}
-        addForm(data)
-        setState({name: '',viewers: ''})
+        if (state.name === '' || state.viewers === '') return
+        dispatch({type: "ADD_FORM", payload: {name: state.name, viewers: state.viewers}})
+        setState({name: '', viewers: ''})
     }
     return (
         <div className='movies-add-form'>
-            <h3>kinolar qoshish</h3>
+            <h3>kino qo'shish</h3>
             <form className='add-form d-flex' onSubmit={addFormHandler}>
                 <input
                     type='text'

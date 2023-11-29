@@ -1,19 +1,15 @@
 import './MovieList.css'
 import MovieListItem from "../move-list-item/MovieListItem";
+import {useContext} from "react";
+import {Context} from "../../context";
+import {filterHandler, searchHandler} from "../../utilities/data";
 
-const MovieList = ({data,onDelete,onToggleProp}) => {
+const MovieList = () => {
+    const {state} = useContext(Context)
+    const data = filterHandler(searchHandler(state.data, state.term), state.filter)
+
     return <ul className='movie-list'>
-        {data.map(item => (
-            <MovieListItem
-                key={item.id}
-                {...item}
-                onDelete={()=>onDelete(item.id)}
-                onToggleProp={(e)=>onToggleProp(item.id,e.currentTarget.getAttribute('data-toggle'))}
-                favourite={item.favourite}
-                like={item.like}
-            />
-        ))}
-
+        {data.map(item => (<MovieListItem key={item.id} {...item}/>))}
     </ul>
 }
 
