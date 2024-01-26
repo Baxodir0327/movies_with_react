@@ -17,6 +17,7 @@ class App extends Component {
                 {id: 2, name: 'Qashqirlar Makoni', viewers: 700, favourite: false, like: false},
                 {id: 3, name: 'Shaytanat', viewers: 450, favourite: true, like: false},
                 {id: 4, name: 'nimadur', viewers: 55, favourite: false, like: true},
+                {id: 6, name: 'hhhh', viewers: 55, favourite: true, like: true},
                 {id: 5, name: 'Ketomon', viewers: 550, favourite: true, like: false},
             ],
             term: '',

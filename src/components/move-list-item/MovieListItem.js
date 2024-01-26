@@ -41,7 +41,8 @@ const MovieListItem = (props) => {
             <input
                 type="number"
                 className='list-group-item-input'
-                defaultValue={viewers}/>
+                defaultValue={viewers}
+            />
 
             <div className='d-flex jsutify-content-center align-items-center'>
                 <button type='button' className='btn-cookie btn-sm'>
